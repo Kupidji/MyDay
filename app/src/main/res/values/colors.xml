@@ -12,5 +12,5 @@
     <color name="colorPrimaryDark">#4A3780</color>
     <color name="mainTextColor">#FFFFFFFF</color>
     <color name="descriptionTextColor">#606061</color>
-    <color name="headingTextColor">#1B1B1D</color>
+    <color name="textColor">#1B1B1D</color>
 </resources>

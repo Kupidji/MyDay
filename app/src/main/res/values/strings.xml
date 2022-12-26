@@ -1,4 +1,14 @@
 <resources>
     <string name="app_name">MyDay</string>
-    <string name="todo">TODO</string>
+    <string name="MyDay">Мой день</string>
+    <string name="Add_task">Добавить задачу</string>
+    <string name="Title">Заголовок</string>
+    <string name="Category">Категория</string>
+    <string name="When">Когда</string>
+    <string name="Description">Комментарий</string>
+    <string name="Add_description">Добавьте текст</string>
+    <string name="Add_title">Добавьте заголовок</string>
+    <string name="Date">Дата</string>
+    <string name="Time">Время</string>
+    <string name="Save">Сохранить</string>
 </resources>
