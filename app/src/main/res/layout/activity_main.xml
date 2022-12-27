@@ -11,13 +11,12 @@
         android:id="@+id/background_myday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:adjustViewBounds="true"
         app:srcCompat="@drawable/backgroundmain"
-
         />
 
     <TextView
@@ -26,28 +25,55 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="128dp"
         android:layout_marginTop="32dp"
-        android:fontFamily="@font/inter_bold"
         android:text="@string/MyDay"
+        android:fontFamily="@font/inter_bold"
         android:textColor="@color/mainTextColor"
         android:textSize="32sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/margin_mainActivity"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/margin_mainActivity2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="20dp"
+        />
+
     <ImageButton
-        android:id="@+id/Add_task_button"
+        android:id="@+id/AddTaskButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="60dp"
-        android:background="#00FFFFFF"
+        android:layout_marginBottom="30dp"
+        android:background="@android:color/transparent"
         android:onClick="GoToAddTaskActivity"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/add_task_button"
+        app:srcCompat="@drawable/button_add_task"
+        />
 
-        tools:ignore="SpeakableTextPresentCheck,DuplicateSpeakableTextCheck" />
+    <TextView
+        android:id="@+id/AddTaskText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Add_task"
+        android:fontFamily="@font/inter_bold"
+        android:textColor="@color/mainTextColor"
+        android:textSize="17sp"
+        app:layout_constraintStart_toStartOf="@id/AddTaskButton"
+        app:layout_constraintTop_toTopOf="@id/AddTaskButton"
+        app:layout_constraintEnd_toEndOf="@id/AddTaskButton"
+        app:layout_constraintBottom_toBottomOf="@id/AddTaskButton"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
