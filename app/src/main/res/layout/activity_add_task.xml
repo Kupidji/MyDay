@@ -4,18 +4,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+
     tools:context=".AddTaskActivity">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/AddTaskActivityHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/add_task_background"
+        app:srcCompat="@drawable/add_task_header"
         android:adjustViewBounds="true"
+        />
+
+    <TextView
+        android:id="@+id/AddTaskText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Add_task"
+        android:textColor="@color/mainTextColor"
+        android:fontFamily="@font/inter_bold"
+        android:textSize="32sp"
+        app:layout_constraintStart_toStartOf="@id/AddTaskActivityHeader"
+        app:layout_constraintTop_toTopOf="@id/AddTaskActivityHeader"
+        app:layout_constraintEnd_toEndOf="@id/AddTaskActivityHeader"
+        android:layout_marginTop="45dp"
+        />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/transparent"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:onClick="GoToMainActivity"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/exit"
+        tools:ignore="SpeakableTextPresentCheck"
         />
 
     <androidx.constraintlayout.widget.Guideline
@@ -41,7 +70,6 @@
         android:layout_marginTop="180dp"
         android:fontFamily="@font/inter_semibold"
         android:text="@string/Title"
-        android:textColor="@color/textColor"
         app:layout_constraintStart_toStartOf="@id/margin_secondActivity"
         app:layout_constraintTop_toTopOf="parent"
         />
@@ -61,12 +89,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:ems="13"
         android:background="@android:color/transparent"
+        android:ems="13"
         android:fontFamily="@font/inter"
         android:hint="@string/Add_title"
-        android:inputType="textPersonName"
+        android:inputType="textWebEditText|textCapSentences"
+        android:maxLength="26"
         android:minHeight="48dp"
+        android:textColorHint="@color/descriptionTextColor"
         app:layout_constraintStart_toStartOf="@id/TitleInputBox"
         app:layout_constraintTop_toTopOf="@id/TitleInputBox" />
 
@@ -76,7 +106,6 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/inter_semibold"
         android:text="@string/Category"
-        android:textColor="@color/textColor"
         app:layout_constraintStart_toStartOf="@id/margin_secondActivity"
         app:layout_constraintTop_toBottomOf="@id/TitleInputBox"
         android:layout_marginTop="40dp"
@@ -99,7 +128,8 @@
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
         app:srcCompat="@drawable/default_category"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="SpeakableTextPresentCheck"
+        />
 
     <ImageButton
         android:id="@+id/calendar_category"
@@ -109,7 +139,8 @@
         app:layout_constraintStart_toEndOf="@id/default_category"
         app:layout_constraintTop_toTopOf="@id/default_category"
         app:srcCompat="@drawable/calendar_category"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="SpeakableTextPresentCheck"
+        />
 
 
     <ImageButton
@@ -120,7 +151,8 @@
         app:layout_constraintStart_toEndOf="@id/calendar_category"
         app:layout_constraintTop_toTopOf="@id/calendar_category"
         app:srcCompat="@drawable/chill_category"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="SpeakableTextPresentCheck"
+        />
 
     <TextView
         android:id="@+id/When"
@@ -128,7 +160,6 @@
         android:layout_height="wrap_content"
         android:text="@string/When"
         android:fontFamily="@font/inter_semibold"
-        android:textColor="@color/textColor"
         android:layout_marginTop="40dp"
         app:layout_constraintStart_toStartOf="@id/margin_secondActivity"
         app:layout_constraintTop_toBottomOf="@id/Category"
@@ -154,10 +185,12 @@
         android:hint="@string/Time"
         android:inputType="time"
         android:minHeight="48dp"
+        android:textColorHint="@color/descriptionTextColor"
         app:layout_constraintBottom_toBottomOf="@id/TimeInputBox"
         app:layout_constraintEnd_toEndOf="@id/TimeInputBox"
         app:layout_constraintStart_toStartOf="@id/TimeInputBox"
-        app:layout_constraintTop_toTopOf="@id/TimeInputBox" />
+        app:layout_constraintTop_toTopOf="@id/TimeInputBox"
+        />
 
     <ImageView
         android:id="@+id/CalendarInputBox"
@@ -181,6 +214,7 @@
         android:hint="@string/Date"
         android:inputType="date"
         android:minHeight="48dp"
+        android:textColorHint="@color/descriptionTextColor"
         app:layout_constraintBottom_toBottomOf="@id/CalendarInputBox"
         app:layout_constraintEnd_toEndOf="@id/CalendarInputBox"
         app:layout_constraintStart_toStartOf="@id/CalendarInputBox"
@@ -193,7 +227,6 @@
         android:layout_height="wrap_content"
         android:text="@string/Description"
         android:fontFamily="@font/inter_semibold"
-        android:textColor="@color/textColor"
         app:layout_constraintStart_toStartOf="@id/margin_secondActivity"
         app:layout_constraintTop_toBottomOf="@id/TimeInputBox"
         android:layout_marginTop="30dp"
@@ -213,14 +246,19 @@
         android:id="@+id/DescriptionText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/DescriptionInputBox"
-        app:layout_constraintTop_toTopOf="@id/DescriptionInputBox"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="10dp"
         android:background="@android:color/transparent"
         android:ems="14"
         android:hint="@string/Add_description"
-        />
+        android:inputType="textPersonName|textCapSentences|textMultiLine"
+        android:maxLength="195"
+        android:maxLines="6"
+        android:minHeight="48dp"
+        android:textColorHint="@color/descriptionTextColor"
+        app:layout_constraintBottom_toBottomOf="@+id/DescriptionInputBox"
+        app:layout_constraintEnd_toEndOf="@+id/DescriptionInputBox"
+        app:layout_constraintStart_toStartOf="@id/DescriptionInputBox"
+        app:layout_constraintTop_toTopOf="@id/DescriptionInputBox"
+        app:layout_constraintVertical_bias="0.053" />
 
     <ImageButton
         android:id="@+id/ButtonSave"
@@ -229,11 +267,12 @@
         android:layout_marginBottom="30dp"
         android:background="@android:color/transparent"
         android:onClick="GoToMainActivity"
-        app:srcCompat="@drawable/button_save"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/textColor"
         app:layout_constraintBottom_toBottomOf="parent"
-        />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/button_save"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/SaveText"

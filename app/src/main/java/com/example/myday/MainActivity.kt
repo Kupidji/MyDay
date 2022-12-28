@@ -15,4 +15,9 @@ class MainActivity : AppCompatActivity() {
         var i = Intent(this, AddTaskActivity::class.java)
         startActivity(i)
     }
+
+    fun GoToSettingsActivity(view : View) {
+        var i = Intent(this, SettingsActivity::class.java)
+        startActivity(i)
+    }
 }

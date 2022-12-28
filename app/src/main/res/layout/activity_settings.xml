@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".SettingsActivity">
+
+    <ImageView
+        android:id="@+id/SettingsHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/settings_header"
+        android:adjustViewBounds="true"
+        />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/transparent"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:onClick="GoToMainActivity"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/exit"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/SettingsHeader"
+        app:layout_constraintTop_toTopOf="@id/SettingsHeader"
+        app:layout_constraintEnd_toEndOf="@id/SettingsHeader"
+        android:layout_marginTop="45dp"
+        android:text="@string/Settings"
+        android:textColor="@color/mainTextColor"
+        android:fontFamily="@font/inter_bold"
+        android:textSize="32sp"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/marginSettingsActivity"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="45dp"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/marginSettingsActivity2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="45dp"
+        />
+
+    <TextView
+        android:id="@+id/ChooseTheme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/marginSettingsActivity"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="190dp"
+        android:text="@string/Choose_Theme"
+        android:fontFamily="@font/inter_semibold"
+        />
+
+    <ImageButton
+        android:id="@+id/WhiteTheme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:background="@android:color/transparent"
+        android:onClick="setWhiteTheme"
+        app:layout_constraintBottom_toBottomOf="@id/ChooseTheme"
+        app:layout_constraintStart_toEndOf="@id/ChooseTheme"
+        app:layout_constraintTop_toTopOf="@id/ChooseTheme"
+        app:srcCompat="@drawable/white_theme"
+        tools:ignore="SpeakableTextPresentCheck"
+        />
+
+    <ImageButton
+        android:id="@+id/DarkTheme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:background="@android:color/transparent"
+        android:onClick="setDarkTheme"
+        app:layout_constraintBottom_toBottomOf="@id/WhiteTheme"
+        app:layout_constraintStart_toEndOf="@id/WhiteTheme"
+        app:layout_constraintTop_toTopOf="@id/WhiteTheme"
+        app:srcCompat="@drawable/dark_theme"
+        tools:ignore="SpeakableTextPresentCheck"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
