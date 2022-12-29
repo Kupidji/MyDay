@@ -13,4 +13,7 @@
     <string name="Save">Сохранить</string>
     <string name="Settings">Настройки</string>
     <string name="Choose_Theme">Выбор темы</string>
+    <string name="Example">Изучаю Kotlin</string>
+    <string name="Example_Time">12:25pm</string>
+
 </resources>

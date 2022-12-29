@@ -11,11 +11,11 @@
         android:id="@+id/AddTaskActivityHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/add_task_header"
-        android:adjustViewBounds="true"
         />
 
     <TextView
@@ -81,7 +81,7 @@
         app:layout_constraintStart_toEndOf="@id/margin_secondActivity"
         app:layout_constraintTop_toBottomOf="@id/Title"
         android:layout_marginTop="10dp"
-        app:srcCompat="@drawable/input_box"
+        app:srcCompat="@drawable/title_input_box"
         />
 
     <EditText
@@ -96,7 +96,6 @@
         android:inputType="textWebEditText|textCapSentences"
         android:maxLength="26"
         android:minHeight="48dp"
-        android:textColorHint="@color/descriptionTextColor"
         app:layout_constraintStart_toStartOf="@id/TitleInputBox"
         app:layout_constraintTop_toTopOf="@id/TitleInputBox" />
 
@@ -169,11 +168,23 @@
         android:id="@+id/TimeInputBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/time_input_box"
+        app:srcCompat="@drawable/calendar_time_input_box"
         app:layout_constraintStart_toStartOf="@id/margin_secondActivity"
         app:layout_constraintTop_toBottomOf="@id/When"
         android:layout_marginTop="10dp"
         />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="105dp"
+        android:background="@android:color/transparent"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        app:layout_constraintStart_toStartOf="@id/TimeInputBox"
+        app:layout_constraintTop_toTopOf="@id/TimeInputBox"
+        app:srcCompat="@drawable/clock_icon"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
         android:id="@+id/getTime"
@@ -185,7 +196,6 @@
         android:hint="@string/Time"
         android:inputType="time"
         android:minHeight="48dp"
-        android:textColorHint="@color/descriptionTextColor"
         app:layout_constraintBottom_toBottomOf="@id/TimeInputBox"
         app:layout_constraintEnd_toEndOf="@id/TimeInputBox"
         app:layout_constraintStart_toStartOf="@id/TimeInputBox"
@@ -201,8 +211,21 @@
         app:layout_constraintEnd_toStartOf="@+id/margin_secondActivity2"
         app:layout_constraintStart_toEndOf="@id/TimeInputBox"
         app:layout_constraintTop_toTopOf="@id/TimeInputBox"
-        app:srcCompat="@drawable/calendar_input_box"
+        app:srcCompat="@drawable/calendar_time_input_box"
         />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="105dp"
+        android:layout_marginTop="2dp"
+        android:background="@android:color/transparent"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        app:layout_constraintStart_toStartOf="@id/CalendarInputBox"
+        app:layout_constraintTop_toTopOf="@id/CalendarInputBox"
+        app:srcCompat="@drawable/calendar_icon"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
         android:id="@+id/getDate"
@@ -214,7 +237,6 @@
         android:hint="@string/Date"
         android:inputType="date"
         android:minHeight="48dp"
-        android:textColorHint="@color/descriptionTextColor"
         app:layout_constraintBottom_toBottomOf="@id/CalendarInputBox"
         app:layout_constraintEnd_toEndOf="@id/CalendarInputBox"
         app:layout_constraintStart_toStartOf="@id/CalendarInputBox"
@@ -253,7 +275,6 @@
         android:maxLength="195"
         android:maxLines="6"
         android:minHeight="48dp"
-        android:textColorHint="@color/descriptionTextColor"
         app:layout_constraintBottom_toBottomOf="@+id/DescriptionInputBox"
         app:layout_constraintEnd_toEndOf="@+id/DescriptionInputBox"
         app:layout_constraintStart_toStartOf="@id/DescriptionInputBox"

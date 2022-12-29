@@ -4,18 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
-    tools:context=".MainActivity" >
+    tools:context=".MainActivity">
 
     <ImageView
         android:id="@+id/background_myday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/backgroundmain"
-        android:adjustViewBounds="true"
+        app:srcCompat="@drawable/main_header"
         />
 
     <TextView
@@ -23,26 +22,29 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="@string/MyDay"
         android:fontFamily="@font/inter_bold"
+        android:text="@string/MyDay"
         android:textColor="@color/mainTextColor"
         android:textSize="32sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         />
 
     <ImageButton
         android:id="@+id/SettingsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/settings"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
         android:background="@android:color/transparent"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:onClick="GoToSettingsActivity"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="10dp"
-        android:onClick="GoToSettingsActivity"
+        app:srcCompat="@drawable/settings"
+        tools:ignore="SpeakableTextPresentCheck"
         />
 
     <androidx.constraintlayout.widget.Guideline
@@ -62,30 +64,66 @@
         />
 
     <ImageButton
+        android:id="@+id/ExampleTaskBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="216dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintStart_toStartOf="@id/margin_mainActivity"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/taskbox"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageView
+        android:id="@+id/ExampleTaskBoxCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/ExampleTaskBox"
+        app:layout_constraintTop_toTopOf="@id/ExampleTaskBox"
+        app:srcCompat="@drawable/default_category"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="42dp"
+        />
+
+    <TextView
+        android:id="@+id/ExampleTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:fontFamily="@font/inter_semibold"
+        android:text="@string/Example"
+        android:textSize="17sp"
+        app:layout_constraintStart_toEndOf="@id/ExampleTaskBoxCategory"
+        app:layout_constraintBottom_toBottomOf="@id/ExampleTaskBoxCategory"
+        app:layout_constraintTop_toTopOf="@id/ExampleTaskBoxCategory"
+        />
+
+    <ImageButton
         android:id="@+id/AddTaskButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
         android:background="@android:color/transparent"
         android:onClick="GoToAddTaskActivity"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/button_add_task"
+        tools:ignore="SpeakableTextPresentCheck"
         />
 
     <TextView
         android:id="@+id/AddTaskText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/Add_task"
         android:fontFamily="@font/inter_bold"
+        android:text="@string/Add_task"
         android:textColor="@color/mainTextColor"
         android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="@id/AddTaskButton"
+        app:layout_constraintEnd_toEndOf="@id/AddTaskButton"
         app:layout_constraintStart_toStartOf="@id/AddTaskButton"
         app:layout_constraintTop_toTopOf="@id/AddTaskButton"
-        app:layout_constraintEnd_toEndOf="@id/AddTaskButton"
-        app:layout_constraintBottom_toBottomOf="@id/AddTaskButton"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

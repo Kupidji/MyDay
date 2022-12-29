@@ -17,5 +17,6 @@
     <color name="background_dark">#0F0B1A</color>
     <color name="mainTextColor_dark">#FFFFFFFF</color>
     <color name="textColor_dark">#FFFFFFFF</color>
+    <color name="descriptionTextColor_dark">#D3CFDD</color>
 
 </resources>
