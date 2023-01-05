@@ -17,4 +17,8 @@
         <item name="android:textColor">@color/textColor</item>
         <item name="android:textColorHint">@color/descriptionTextColor</item>
     </style>
+    
+    <style name="inBoxTimeStyle">
+        <item name="android:textColor">@color/descriptionTextColor</item>
+    </style>
 </resources>

@@ -71,8 +71,10 @@
         android:background="@android:color/transparent"
         app:layout_constraintStart_toStartOf="@id/margin_mainActivity"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/margin_mainActivity2"
         app:srcCompat="@drawable/taskbox"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="SpeakableTextPresentCheck"
+        />
 
     <ImageView
         android:id="@+id/ExampleTaskBoxCategory"
@@ -93,16 +95,32 @@
         android:fontFamily="@font/inter_semibold"
         android:text="@string/Example"
         android:textSize="17sp"
+        app:layout_goneMarginBottom="45dp"
         app:layout_constraintStart_toEndOf="@id/ExampleTaskBoxCategory"
-        app:layout_constraintBottom_toBottomOf="@id/ExampleTaskBoxCategory"
+        app:layout_constraintBottom_toTopOf="@id/ExampleTime"
         app:layout_constraintTop_toTopOf="@id/ExampleTaskBoxCategory"
+        />
+
+    <TextView
+        style="@style/inBoxTimeStyle"
+        android:id="@+id/ExampleTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:text="@string/Example_Time"
+        android:fontFamily="@font/inter_semibold"
+        app:layout_constraintBottom_toBottomOf="@id/ExampleTaskBox"
+        app:layout_constraintStart_toEndOf="@id/ExampleTaskBoxCategory"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="45dp"
+        android:visibility="visible"
         />
 
     <ImageButton
         android:id="@+id/AddTaskButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="10dp"
         android:background="@android:color/transparent"
         android:onClick="GoToAddTaskActivity"
         app:layout_constraintBottom_toBottomOf="parent"
