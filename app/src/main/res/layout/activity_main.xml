@@ -42,7 +42,7 @@
         android:fontFamily="@font/inter_semibold"
         android:textColor="@color/mainTextColor"
         android:textSize="17sp"
-        android:text="Октябрь 20, 2022"
+        android:text="какая-то дата"
 
         />
 
@@ -89,67 +89,6 @@
         android:text="@string/NothingThere"
         android:fontFamily="@font/inter_bold"
         android:textSize="28sp"
-        />
-
-    <androidx.constraintlayout.widget.Group
-        android:id="@+id/Example"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:constraint_referenced_ids="ExampleTaskBox, ExampleTaskBoxCategory, ExampleTime, ExampleTitle"
-        android:visibility="gone"
-        />
-
-    <ImageButton
-        android:id="@+id/ExampleTaskBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="216dp"
-        android:background="@android:color/transparent"
-        app:layout_constraintStart_toStartOf="@id/margin_mainActivity"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/margin_mainActivity2"
-        app:srcCompat="@drawable/taskbox"
-        tools:ignore="SpeakableTextPresentCheck"
-        />
-
-    <ImageView
-        android:id="@+id/ExampleTaskBoxCategory"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/ExampleTaskBox"
-        app:layout_constraintTop_toTopOf="@id/ExampleTaskBox"
-        app:srcCompat="@drawable/default_category"
-        android:layout_marginStart="17dp"
-        android:layout_marginTop="42dp"
-        />
-
-    <TextView
-        android:id="@+id/ExampleTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:fontFamily="@font/inter_semibold"
-        android:text="@string/Example"
-        android:textSize="17sp"
-        app:layout_goneMarginBottom="45dp"
-        app:layout_constraintStart_toEndOf="@id/ExampleTaskBoxCategory"
-        app:layout_constraintBottom_toTopOf="@id/ExampleTime"
-        app:layout_constraintTop_toTopOf="@id/ExampleTaskBoxCategory"
-        />
-
-    <TextView
-        style="@style/inBoxTimeStyle"
-        android:id="@+id/ExampleTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:text="@string/Example_Time"
-        android:fontFamily="@font/inter_semibold"
-        app:layout_constraintBottom_toBottomOf="@id/ExampleTaskBox"
-        app:layout_constraintStart_toEndOf="@id/ExampleTaskBoxCategory"
-        android:layout_marginStart="10dp"
-        android:layout_marginBottom="45dp"
-        android:visibility="visible"
         />
 
     <ImageButton

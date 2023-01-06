@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
+    android:layout_marginTop="2dp"
+    android:layout_marginBottom="2dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageButton
+        android:id="@+id/TaskBoxPattern"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/taskbox"
+        tools:ignore="SpeakableTextPresentCheck"
+        />
+
+    <ImageView
+        android:id="@+id/TaskBoxCategoryPattern"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/TaskBoxPattern"
+        app:layout_constraintTop_toTopOf="@id/TaskBoxPattern"
+        app:srcCompat="@drawable/default_category"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="42dp"
+        />
+
+    <TextView
+        android:id="@+id/TitlePattern"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:fontFamily="@font/inter_semibold"
+        android:text="@string/Title"
+        android:textSize="17sp"
+        app:layout_goneMarginBottom="45dp"
+        app:layout_constraintStart_toEndOf="@id/TaskBoxCategoryPattern"
+        app:layout_constraintBottom_toTopOf="@id/TimePattern"
+        app:layout_constraintTop_toTopOf="@id/TaskBoxCategoryPattern"
+        />
+
+    <TextView
+        style="@style/inBoxTimeStyle"
+        android:id="@+id/TimePattern"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:text="@string/Time"
+        android:fontFamily="@font/inter_semibold"
+        app:layout_constraintBottom_toBottomOf="@id/TaskBoxPattern"
+        app:layout_constraintStart_toEndOf="@id/TaskBoxCategoryPattern"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="45dp"
+        android:visibility="visible"
+        />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/TaskBoxPattern"
+        app:layout_constraintBottom_toBottomOf="@id/TaskBoxPattern"
+        app:layout_constraintStart_toEndOf="@id/TaskBoxCategoryPattern"
+        app:layout_constraintEnd_toEndOf="@id/TaskBoxPattern"
+        android:layout_marginStart="240dp"
+        android:background="@drawable/checkbox"
+        android:button="null"
+
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
