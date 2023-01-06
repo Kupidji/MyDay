@@ -8,7 +8,7 @@ import com.example.myday.databinding.ActivityAddTaskBinding
 
 class AddTaskActivity : AppCompatActivity() {
     lateinit var binding : ActivityAddTaskBinding
-    private var category: String = "1"
+    private var category: Int = R.drawable.default_category
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,24 +17,21 @@ class AddTaskActivity : AppCompatActivity() {
     }
 
     fun setCategoryDefault(view: View) {
-        category = "1"
+        category = R.drawable.default_category
     }
 
     fun setCategoryCalendar(view: View) {
-        category = "2"
+        category = R.drawable.calendar_category
     }
 
     fun setCategoryChill(view: View) {
-        category = "3"
+        category = R.drawable.chill_category
     }
 
     fun goToMainActivity(view : View) {
+        val task = Task(binding.getTitle.text.toString(), category, binding.getTime.text.toString(), binding.getDate.text.toString(), binding.getDescription.text.toString())
         val i = Intent()
-        i.putExtra("title", binding.getTitle.text.toString())
-        i.putExtra("time", binding.getTime.text.toString())
-        i.putExtra("date", binding.getDate.text.toString())
-        i.putExtra("category", category)
-        i.putExtra("description", binding.getDescription.text.toString())
+        i.putExtra("task", task)
         setResult(RESULT_OK, i)
         finish()
     }

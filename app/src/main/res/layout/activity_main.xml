@@ -97,7 +97,6 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:background="@android:color/transparent"
-        android:onClick="GoToAddTaskActivity"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -117,6 +116,16 @@
         app:layout_constraintEnd_toEndOf="@id/AddTaskButton"
         app:layout_constraintStart_toStartOf="@id/AddTaskButton"
         app:layout_constraintTop_toTopOf="@id/AddTaskButton"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/RecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@id/margin_mainActivity"
+        app:layout_constraintEnd_toStartOf="@id/margin_mainActivity2"
+        android:layout_marginTop="216dp"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

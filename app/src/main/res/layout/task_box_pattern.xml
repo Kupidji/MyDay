@@ -4,7 +4,6 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@android:color/transparent"
-    android:layout_marginTop="2dp"
     android:layout_marginBottom="2dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -68,9 +67,9 @@
         app:layout_constraintBottom_toBottomOf="@id/TaskBoxPattern"
         app:layout_constraintStart_toEndOf="@id/TaskBoxCategoryPattern"
         app:layout_constraintEnd_toEndOf="@id/TaskBoxPattern"
-        android:layout_marginStart="240dp"
+        android:layout_marginStart="220dp"
         android:background="@drawable/checkbox"
-        android:button="null"
+        android:button="@null"
 
         />
 
