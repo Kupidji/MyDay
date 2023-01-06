@@ -15,5 +15,5 @@
     <string name="Choose_Theme">Выбор темы</string>
     <string name="Example">Изучаю Kotlin</string>
     <string name="Example_Time">12:25pm</string>
-
+    <string name="NothingThere">Здесь пока пусто</string>
 </resources>

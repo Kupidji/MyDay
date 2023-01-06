@@ -41,7 +41,7 @@
         android:background="@android:color/transparent"
         android:minWidth="48dp"
         android:minHeight="48dp"
-        android:onClick="GoToMainActivity"
+        android:onClick="closeAddTaskActivity"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/exit"
@@ -94,7 +94,7 @@
         android:ems="13"
         android:fontFamily="@font/inter"
         android:hint="@string/Add_title"
-        android:inputType="textWebEditText|textCapSentences"
+        android:inputType="text|textCapSentences"
         android:maxLength="26"
         android:minHeight="48dp"
         app:layout_constraintStart_toStartOf="@id/TitleInputBox"
@@ -129,6 +129,7 @@
         android:background="@android:color/transparent"
         app:srcCompat="@drawable/default_category"
         tools:ignore="SpeakableTextPresentCheck"
+        android:onClick="setCategoryDefault"
         />
 
     <ImageButton
@@ -140,6 +141,7 @@
         app:layout_constraintTop_toTopOf="@id/default_category"
         app:srcCompat="@drawable/calendar_category"
         tools:ignore="SpeakableTextPresentCheck"
+        android:onClick="setCategoryCalendar"
         />
 
 
@@ -152,6 +154,7 @@
         app:layout_constraintTop_toTopOf="@id/calendar_category"
         app:srcCompat="@drawable/chill_category"
         tools:ignore="SpeakableTextPresentCheck"
+        android:onClick="setCategoryChill"
         />
 
     <TextView
@@ -268,7 +271,7 @@
         />
 
     <EditText
-        android:id="@+id/DescriptionText"
+        android:id="@+id/getDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
@@ -292,7 +295,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:background="@android:color/transparent"
-        android:onClick="GoToMainActivity"
+        android:onClick="goToMainActivity"
         android:textColor="@color/textColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -313,7 +316,6 @@
         app:layout_constraintEnd_toEndOf="@id/ButtonSave"
         app:layout_constraintBottom_toBottomOf="@id/ButtonSave"
         />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

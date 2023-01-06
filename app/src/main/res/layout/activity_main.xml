@@ -31,6 +31,21 @@
         app:layout_constraintTop_toTopOf="parent"
         />
 
+    <TextView
+        android:id="@+id/CurrentDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/MyDay"
+        app:layout_constraintStart_toStartOf="@id/MyDay"
+        app:layout_constraintEnd_toEndOf="@id/MyDay"
+        android:layout_marginTop="3dp"
+        android:fontFamily="@font/inter_semibold"
+        android:textColor="@color/mainTextColor"
+        android:textSize="17sp"
+        android:text="Октябрь 20, 2022"
+
+        />
+
     <ImageButton
         android:id="@+id/SettingsButton"
         android:layout_width="wrap_content"
@@ -61,6 +76,27 @@
         android:layout_height="0dp"
         android:orientation="vertical"
         app:layout_constraintGuide_end="20dp"
+        />
+
+    <TextView
+        style="@style/inBoxTimeStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@id/margin_mainActivity"
+        app:layout_constraintEnd_toEndOf="@id/margin_mainActivity2"
+        android:layout_marginTop="270dp"
+        android:text="@string/NothingThere"
+        android:fontFamily="@font/inter_bold"
+        android:textSize="28sp"
+        />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/Example"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="ExampleTaskBox, ExampleTaskBoxCategory, ExampleTime, ExampleTitle"
+        android:visibility="gone"
         />
 
     <ImageButton
