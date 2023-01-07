@@ -1,3 +1,22 @@
 package com.example.myday
 
-data class Task(val title : String, val category : Int,val time : String, val date : String, val description : String) : java.io.Serializable
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity (tableName = "tasks")
+data class Task(
+    @PrimaryKey(autoGenerate = true)
+    var id : Int? = null,
+    @ColumnInfo(name = "title")
+    val title : String,
+    @ColumnInfo(name = "category")
+    val category : Int,
+    @ColumnInfo(name = "time")
+    val time : String,
+    @ColumnInfo(name = "date")
+    val date : String,
+    @ColumnInfo(name = "description")
+    val description : String
+    )
+    : java.io.Serializable

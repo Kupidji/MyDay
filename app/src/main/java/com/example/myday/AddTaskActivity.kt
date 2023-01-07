@@ -29,7 +29,7 @@ class AddTaskActivity : AppCompatActivity() {
     }
 
     fun goToMainActivity(view : View) {
-        val task = Task(binding.getTitle.text.toString(), category, binding.getTime.text.toString(), binding.getDate.text.toString(), binding.getDescription.text.toString())
+        val task = Task(id = null, title = binding.getTitle.text.toString(), category = category,time = binding.getTime.text.toString(), date = binding.getDate.text.toString(), description = binding.getDescription.text.toString())
         val i = Intent()
         i.putExtra("task", task)
         setResult(RESULT_OK, i)

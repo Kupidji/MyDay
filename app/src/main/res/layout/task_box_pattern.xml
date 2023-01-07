@@ -70,8 +70,6 @@
         android:layout_marginStart="220dp"
         android:background="@drawable/checkbox"
         android:button="@null"
-
         />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

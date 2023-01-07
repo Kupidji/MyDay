@@ -7,6 +7,7 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.asLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myday.databinding.ActivityMainBinding
 import java.text.SimpleDateFormat
@@ -16,7 +17,7 @@ class MainActivity : AppCompatActivity() {
 
     private var launcher : ActivityResultLauncher<Intent>? = null
     lateinit var binding : ActivityMainBinding
-    val adapter = TaskAdapter()
+    private var adapter = TaskAdapter()
     var currentDate: String = SimpleDateFormat("dd MMMM, yyyy", Locale.getDefault()).format(Date())
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,12 +26,22 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         binding.CurrentDate.text = currentDate
         createTask()
+        val DB = TaskDB.getDB(this)
+        DB.getDao().getAllTasks().asLiveData().observe(this){
+            adapter.taskList.clear()
+            it.forEach {
+                adapter.addTask(it)
+            }
+        }
         launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
                 result : ActivityResult ->
             if (result.resultCode == RESULT_OK) {
-                adapter.addTask(result.data?.getSerializableExtra("task") as Task)
+                Thread{
+                    DB.getDao().insertTask(result.data?.getSerializableExtra("task") as Task)
+                }.start()
             }
         }
+
 
     }
 
