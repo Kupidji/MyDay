@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     tools:context=".AddTaskActivity">
 
     <ImageView
@@ -127,9 +126,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
-        app:srcCompat="@drawable/default_category"
+        app:srcCompat="@drawable/choosen_default_category"
         tools:ignore="SpeakableTextPresentCheck"
         android:onClick="setCategoryDefault"
+        app:layout_constraintEnd_toStartOf="@id/calendar_category"
+        app:layout_constraintTop_toTopOf="@id/calendar_category"
+        app:layout_constraintBottom_toBottomOf="@id/calendar_category"
         />
 
     <ImageButton
@@ -142,6 +144,8 @@
         app:srcCompat="@drawable/calendar_category"
         tools:ignore="SpeakableTextPresentCheck"
         android:onClick="setCategoryCalendar"
+        app:layout_constraintEnd_toStartOf="@id/chill_category"
+        app:layout_constraintBottom_toBottomOf="@id/default_category"
         />
 
 
@@ -152,9 +156,11 @@
         android:background="@android:color/transparent"
         app:layout_constraintStart_toEndOf="@id/calendar_category"
         app:layout_constraintTop_toTopOf="@id/calendar_category"
+        app:layout_constraintBottom_toBottomOf="@id/calendar_category"
         app:srcCompat="@drawable/chill_category"
         tools:ignore="SpeakableTextPresentCheck"
         android:onClick="setCategoryChill"
+
         />
 
     <TextView
@@ -187,6 +193,7 @@
         android:minHeight="48dp"
         app:layout_constraintStart_toStartOf="@id/TimeInputBox"
         app:layout_constraintTop_toTopOf="@id/TimeInputBox"
+        app:layout_constraintBottom_toBottomOf="@id/TimeInputBox"
         app:srcCompat="@drawable/clock_icon"
         tools:ignore="SpeakableTextPresentCheck"
         />

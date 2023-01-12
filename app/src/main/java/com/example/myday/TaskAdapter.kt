@@ -16,7 +16,8 @@ class TaskAdapter : RecyclerView.Adapter<TaskAdapter.TaskHolder>() {
 
         fun bind(task : Task) {
             binding.TitlePattern.text = task.title
-            binding.TimePattern.text = task.time
+            if (task.time != "") binding.TimePattern.text = task.time
+            else binding.TimePattern.visibility = View.GONE
             binding.TaskBoxCategoryPattern.setImageResource(task.category)
         }
     }

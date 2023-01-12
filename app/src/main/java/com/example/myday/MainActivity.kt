@@ -3,6 +3,7 @@ package com.example.myday
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -18,13 +19,16 @@ class MainActivity : AppCompatActivity() {
     private var launcher : ActivityResultLauncher<Intent>? = null
     lateinit var binding : ActivityMainBinding
     private var adapter = TaskAdapter()
+
     var currentDate: String = SimpleDateFormat("dd MMMM, yyyy", Locale.getDefault()).format(Date())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         binding.CurrentDate.text = currentDate
+
         createTask()
         val DB = TaskDB.getDB(this)
         DB.getDao().getAllTasks().asLiveData().observe(this){
@@ -42,7 +46,8 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-
+        if (adapter.itemCount != 0) binding.NothingThere.visibility = View.VISIBLE
+        else binding.NothingThere.visibility = View.GONE // не работает
     }
 
     fun GoToSettingsActivity(view : View) {

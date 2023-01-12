@@ -43,7 +43,6 @@
         android:textColor="@color/mainTextColor"
         android:textSize="17sp"
         android:text="какая-то дата"
-
         />
 
     <ImageButton
@@ -80,6 +79,7 @@
 
     <TextView
         style="@style/inBoxTimeStyle"
+        android:id="@+id/NothingThere"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
@@ -89,6 +89,18 @@
         android:text="@string/NothingThere"
         android:fontFamily="@font/inter_bold"
         android:textSize="28sp"
+        android:visibility="visible"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/RecyclerView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@id/margin_mainActivity"
+        app:layout_constraintEnd_toStartOf="@id/margin_mainActivity2"
+        android:paddingTop="190dp"
+        android:paddingBottom="80dp"
         />
 
     <ImageButton
@@ -116,16 +128,6 @@
         app:layout_constraintEnd_toEndOf="@id/AddTaskButton"
         app:layout_constraintStart_toStartOf="@id/AddTaskButton"
         app:layout_constraintTop_toTopOf="@id/AddTaskButton"
-        />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/RecyclerView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="@id/margin_mainActivity"
-        app:layout_constraintEnd_toStartOf="@id/margin_mainActivity2"
-        android:layout_marginTop="216dp"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
