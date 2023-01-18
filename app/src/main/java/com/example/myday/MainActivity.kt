@@ -3,7 +3,6 @@ package com.example.myday
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.TextView
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -14,52 +13,82 @@ import com.example.myday.databinding.ActivityMainBinding
 import java.text.SimpleDateFormat
 import java.util.*
 
-class MainActivity : AppCompatActivity() {
+ class MainActivity : AppCompatActivity(), TaskAdapter.RecyclerViewListener {
 
     private var launcher : ActivityResultLauncher<Intent>? = null
+    private var launcher2 : ActivityResultLauncher<Intent>? = null
     lateinit var binding : ActivityMainBinding
-    private var adapter = TaskAdapter()
-
-    var currentDate: String = SimpleDateFormat("dd MMMM, yyyy", Locale.getDefault()).format(Date())
+    private var adapter = TaskAdapter(this)
+    private lateinit var DB : TaskDB
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.CurrentDate.text = currentDate
+        DB = TaskDB.getDB(this)
 
-        createTask()
-        val DB = TaskDB.getDB(this)
-        DB.getDao().getAllTasks().asLiveData().observe(this){
-            adapter.taskList.clear()
-            it.forEach {
-                adapter.addTask(it)
-            }
-        }
+        binding.CurrentDate.text = SimpleDateFormat("dd MMMM, yyyy", Locale.getDefault()).format(Date())
+
+        // Добавляю задачу
         launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
                 result : ActivityResult ->
             if (result.resultCode == RESULT_OK) {
                 Thread{
                     DB.getDao().insertTask(result.data?.getSerializableExtra("task") as Task)
                 }.start()
+                if (adapter.itemCount == 0) binding.NothingThere.visibility = View.VISIBLE
+                else binding.NothingThere.visibility = View.GONE // не работает
+                recreate()
             }
         }
 
-        if (adapter.itemCount != 0) binding.NothingThere.visibility = View.VISIBLE
-        else binding.NothingThere.visibility = View.GONE // не работает
-    }
+        launcher2 = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+                result : ActivityResult ->
+            if (result.resultCode == RESULT_OK) {
+                Thread{
+                    DB.getDao().editTask(result.data?.getSerializableExtra("task_description_back") as Task)
+                }.start()
+                recreate()
+            }
+        }
 
-    fun GoToSettingsActivity(view : View) {
-        var i = Intent(this, SettingsActivity::class.java)
-        startActivity(i)
-    }
-
-    private fun createTask() {
+        // отрисовываю RecyclerView
         binding.RecyclerView.layoutManager = LinearLayoutManager(this)
         binding.RecyclerView.adapter = adapter
+        DB.getDao().getAllTasks().asLiveData().observe(this){
+            it.forEach {
+                if (!adapter.taskList.contains(it)) adapter.addTask(it)
+            }
+        }
+        if (adapter.itemCount == 0) binding.NothingThere.visibility = View.VISIBLE
+        else binding.NothingThere.visibility = View.GONE // не работает
+
+        binding.SettingsButton.setOnClickListener {
+            startActivity(Intent(this, SettingsActivity::class.java))
+        }
+
         binding.AddTaskButton.setOnClickListener {
             launcher?.launch(Intent(this@MainActivity, AddTaskActivity::class.java))
         }
     }
-}
+
+     override fun onClickCheckBox(task: Task) {
+         Thread {
+             if (adapter.taskList.contains(task)) {
+                 adapter.delTask(task)
+                 DB.getDao().deleteTask(task)
+             }
+         }.start()
+         if (adapter.itemCount == 0) binding.NothingThere.visibility = View.VISIBLE
+         else binding.NothingThere.visibility = View.GONE // не работает
+         recreate()
+     }
+
+     override fun onClickTaskBoxPattern(task: Task) {
+         //Редактирую задачу
+         val i = Intent(this, TaskDescription::class.java)
+         i.putExtra("task_description", task)
+         launcher2?.launch(i)
+     }
+ }

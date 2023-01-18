@@ -45,22 +45,6 @@
         android:text="какая-то дата"
         />
 
-    <ImageButton
-        android:id="@+id/SettingsButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:background="@android:color/transparent"
-        android:minWidth="48dp"
-        android:minHeight="48dp"
-        android:onClick="GoToSettingsActivity"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/settings"
-        tools:ignore="SpeakableTextPresentCheck"
-        />
-
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/margin_mainActivity"
         android:layout_width="0dp"
@@ -96,12 +80,11 @@
         android:id="@+id/RecyclerView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="@id/margin_mainActivity"
-        app:layout_constraintEnd_toStartOf="@id/margin_mainActivity2"
         android:paddingTop="190dp"
         android:paddingBottom="80dp"
-        />
+        app:layout_constraintEnd_toStartOf="@id/margin_mainActivity2"
+        app:layout_constraintStart_toStartOf="@id/margin_mainActivity"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/AddTaskButton"
@@ -128,6 +111,21 @@
         app:layout_constraintEnd_toEndOf="@id/AddTaskButton"
         app:layout_constraintStart_toStartOf="@id/AddTaskButton"
         app:layout_constraintTop_toTopOf="@id/AddTaskButton"
+        />
+
+    <ImageButton
+        android:id="@+id/SettingsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/transparent"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/settings"
+        tools:ignore="SpeakableTextPresentCheck"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

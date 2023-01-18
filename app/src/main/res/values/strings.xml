@@ -17,7 +17,7 @@
     <string name="Example_Time">12:25pm</string>
     <string name="NothingThere">Здесь пока пусто</string>
     <string name="Task">Задача</string>
-    <string name="Edit">Редактировать</string>
+    <string name="SaveEdit">Сохранить редактирование</string>
     <string name="Title_task">Заголовок:</string>
     <string name="ErrorTitle">Обязательное поле</string>
 </resources>

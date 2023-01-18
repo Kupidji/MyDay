@@ -15,6 +15,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
         />
 
     <TextView
@@ -32,6 +33,7 @@
         />
 
     <ImageButton
+        android:id="@+id/CloseButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -72,7 +74,7 @@
         android:fontFamily="@font/inter_semibold"
         />
 
-    <TextView
+    <EditText
         android:id="@+id/TitleTask"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -80,11 +82,15 @@
         app:layout_constraintTop_toTopOf="@id/Title"
         app:layout_constraintBottom_toBottomOf="@id/Title"
         android:layout_marginStart="5dp"
-        android:text="Какой-то заголовок"
+        android:text="@string/Title"
+        android:inputType="text|textCapSentences"
         android:fontFamily="@font/inter"
+        android:background="@android:color/transparent"
+        android:maxLength="24"
         />
 
     <ImageView
+        android:id="@+id/CategoryTask"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="@id/margin_task"
@@ -92,7 +98,7 @@
         app:layout_constraintBottom_toBottomOf="@id/Title"
         app:layout_constraintEnd_toStartOf="@id/margin_task2"
         app:layout_constraintHorizontal_bias="1"
-        app:srcCompat="@drawable/choosen_default_category"
+        app:srcCompat="@drawable/default_category"
         />
 
     <TextView
@@ -117,19 +123,20 @@
         android:background="@android:color/transparent"
         />
 
-    <TextView
+    <EditText
         android:id="@+id/TimeTask"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="@id/TimeInputBoxTask"
         app:layout_constraintStart_toStartOf="@id/TimeInputBoxTask"
         app:layout_constraintBottom_toBottomOf="@id/TimeInputBoxTask"
-        android:text=""
         android:fontFamily="@font/inter"
         android:layout_marginStart="10dp"
-        android:paddingTop="15dp"
         android:minHeight="48dp"
+        android:background="@android:color/transparent"
         android:hint="@string/Time"
+        android:text=""
+        android:inputType="time"
         />
 
     <ImageView
@@ -155,19 +162,20 @@
         app:srcCompat="@drawable/calendar_time_input_box"
         />
 
-    <TextView
+    <EditText
         android:id="@+id/DateTask"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="@id/DateInputBoxTask"
         app:layout_constraintStart_toStartOf="@id/DateInputBoxTask"
         app:layout_constraintBottom_toBottomOf="@id/DateInputBoxTask"
-        android:text=""
+        android:hint="@string/Date"
         android:fontFamily="@font/inter"
         android:layout_marginStart="10dp"
-        android:paddingTop="15dp"
         android:minHeight="48dp"
-        android:hint="@string/Date"
+        android:background="@android:color/transparent"
+        android:text=""
+        android:inputType="date"
         />
 
     <ImageView
@@ -202,21 +210,24 @@
         android:layout_marginTop="5dp"
         />
 
-    <TextView
+    <EditText
+        android:id="@+id/DescriptionText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="@string/NothingThere"
         app:layout_constraintStart_toStartOf="@id/DescriptionInputBoxTask"
         app:layout_constraintTop_toTopOf="@id/DescriptionInputBoxTask"
         android:layout_marginBottom="100dp"
         android:fontFamily="@font/inter"
-        android:text=""
+        android:hint="@string/NothingThere"
         android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"
+        android:background="@android:color/transparent"
+        android:text=""
+        android:inputType="text|textCapSentences"
         />
 
     <ImageButton
-        android:id="@+id/ButtonEdit"
+        android:id="@+id/SaveEditButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
@@ -233,13 +244,13 @@
         android:id="@+id/SaveText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/Edit"
+        android:text="@string/SaveEdit"
         android:fontFamily="@font/inter_bold"
         android:textColor="@color/mainTextColor"
-        app:layout_constraintStart_toStartOf="@id/ButtonEdit"
-        app:layout_constraintTop_toTopOf="@id/ButtonEdit"
-        app:layout_constraintEnd_toEndOf="@id/ButtonEdit"
-        app:layout_constraintBottom_toBottomOf="@id/ButtonEdit"
+        app:layout_constraintStart_toStartOf="@id/SaveEditButton"
+        app:layout_constraintTop_toTopOf="@id/SaveEditButton"
+        app:layout_constraintEnd_toEndOf="@id/SaveEditButton"
+        app:layout_constraintBottom_toBottomOf="@id/SaveEditButton"
         />
 
 

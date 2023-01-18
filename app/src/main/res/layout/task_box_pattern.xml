@@ -62,7 +62,7 @@
         tools:text="@string/Time"
         />
 
-    <CheckBox
+    <ImageButton
         android:id="@+id/checkBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -71,8 +71,8 @@
         app:layout_constraintStart_toEndOf="@id/TaskBoxCategoryPattern"
         app:layout_constraintEnd_toEndOf="@id/TaskBoxPattern"
         android:layout_marginStart="220dp"
-        android:background="@drawable/checkbox"
-        android:button="@null"
+        android:src="@drawable/checkbox"
+        android:background="@android:color/transparent"
         />
 
     <Space

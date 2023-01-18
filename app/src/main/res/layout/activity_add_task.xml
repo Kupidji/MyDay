@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:layout_alignParentBottom="true"
     tools:context=".AddTaskActivity">
 
     <ImageView
@@ -94,7 +96,7 @@
         android:fontFamily="@font/inter"
         android:hint="@string/Add_title"
         android:inputType="text|textCapSentences"
-        android:maxLength="26"
+        android:maxLength="24"
         android:minHeight="48dp"
         app:layout_constraintStart_toStartOf="@id/TitleInputBox"
         app:layout_constraintTop_toTopOf="@id/TitleInputBox" />
@@ -274,6 +276,8 @@
         app:srcCompat="@drawable/description_input_box"
         app:layout_constraintStart_toStartOf="@id/margin_secondActivity"
         app:layout_constraintTop_toBottomOf="@id/Description"
+        app:layout_constraintBottom_toBottomOf="@id/ButtonSave"
+        app:layout_constraintVertical_bias="0"
         android:layout_marginTop="10dp"
         />
 
@@ -307,6 +311,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1"
         app:srcCompat="@drawable/button_save"
         tools:ignore="SpeakableTextPresentCheck"
         />

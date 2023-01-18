@@ -14,16 +14,12 @@ class AddTaskActivity : AppCompatActivity() {
 
     lateinit var binding : ActivityAddTaskBinding
     private var category: Int = R.drawable.default_category
-    var flag = false
     private var doubleBackToExitPressedOnce = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAddTaskBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        flag = false
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
-
     }
 
     override fun onBackPressed() {
@@ -66,7 +62,7 @@ class AddTaskActivity : AppCompatActivity() {
 
     fun goToMainActivity(view : View) {
         if (binding.getTitle.text.isEmpty()) {
-            binding.getTitle.setError("Обязательное поле")
+            binding.getTitle.error = "Обязательное поле"
         }
         else {
             val task = Task(
@@ -78,9 +74,7 @@ class AddTaskActivity : AppCompatActivity() {
                 description = binding.getDescription.text.toString()
             )
             val i = Intent()
-            if (binding.getTime.text == null) flag = true
             i.putExtra("task", task)
-            i.putExtra("timeVisibility", flag)
             setResult(RESULT_OK, i)
             finish()
         }
@@ -88,13 +82,9 @@ class AddTaskActivity : AppCompatActivity() {
 
     fun closeAddTaskActivity(view: View) {
         if (binding.getTitle.text.isBlank()) {
-            confirmExit()
+
         }
         setResult(RESULT_CANCELED)
         finish()
-    }
-
-    fun confirmExit() {
-
     }
 }
