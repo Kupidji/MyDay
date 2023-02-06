@@ -283,7 +283,7 @@
 
     <EditText
         android:id="@+id/getDescription"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
         android:ems="14"
@@ -298,6 +298,8 @@
         app:layout_constraintTop_toTopOf="@id/DescriptionInputBox"
         android:layout_marginBottom="100dp"
         android:paddingBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
         />
 
     <ImageButton
@@ -331,4 +333,3 @@
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-

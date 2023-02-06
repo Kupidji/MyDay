@@ -3,6 +3,7 @@ package com.example.myday
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.myday.data.Task
 import com.example.myday.databinding.ActivityTaskDescriptionBinding
 
 class TaskDescription : AppCompatActivity() {

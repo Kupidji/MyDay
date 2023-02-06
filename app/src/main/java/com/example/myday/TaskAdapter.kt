@@ -5,12 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myday.data.Task
 import com.example.myday.databinding.TaskBoxPatternBinding
-
 
 class TaskAdapter(val listener : RecyclerViewListener) : RecyclerView.Adapter<TaskAdapter.TaskHolder>() {
 
-    val taskList = ArrayList<Task>()
+    var taskList = ArrayList<Task>()
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskHolder {
         val view = LayoutInflater.from(parent.context)
@@ -33,9 +34,15 @@ class TaskAdapter(val listener : RecyclerViewListener) : RecyclerView.Adapter<Ta
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun delTask(task : Task) {
-        taskList.remove(task)
-        notifyDataSetChanged()
+    fun setData(listOfTask : MutableList<Task>) {
+        if (taskList.isEmpty()) {
+            taskList.clear()
+            taskList.addAll(listOfTask)
+            notifyDataSetChanged()
+        }
+        else {
+            taskList = listOfTask as ArrayList<Task>
+        }
     }
 
     class TaskHolder (
@@ -44,7 +51,9 @@ class TaskAdapter(val listener : RecyclerViewListener) : RecyclerView.Adapter<Ta
 
         fun bind(task : Task, listener : RecyclerViewListener) {
             binding.TitlePattern.text = task.title
-            if (task.time.isNotEmpty()) binding.TimePattern.text = task.time
+            if (task.time.isNotEmpty()) {
+                binding.TimePattern.text = task.time
+            }
             else binding.TimePattern.visibility = View.GONE
             binding.TaskBoxCategoryPattern.setImageResource(task.category)
 
@@ -53,7 +62,6 @@ class TaskAdapter(val listener : RecyclerViewListener) : RecyclerView.Adapter<Ta
             }
 
             binding.TaskBoxPattern.setOnClickListener {
-                // для открытия нового activity
                 listener.onClickTaskBoxPattern(task)
             }
         }

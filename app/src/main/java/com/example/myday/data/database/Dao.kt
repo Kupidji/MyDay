@@ -1,21 +1,19 @@
-package com.example.myday
+package com.example.myday.data.database
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
-import kotlinx.coroutines.flow.Flow
-
+import com.example.myday.data.Task
 
 @Dao
 interface Dao {
     @Insert
     fun insertTask(task : Task)
     @Query ("SELECT * FROM tasks")
-    fun getAllTasks() : Flow <List<Task>>
-    @Query ("SELECT * FROM tasks where id = :taskID")
-    fun getTask(taskID : Int) : Flow <List<Task>>
+    fun getAllTasks() : LiveData <List<Task>>
     @Delete
     fun deleteTask(task : Task)
     @Update

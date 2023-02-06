@@ -212,10 +212,13 @@
 
     <EditText
         android:id="@+id/DescriptionText"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="@id/DescriptionInputBoxTask"
         app:layout_constraintTop_toTopOf="@id/DescriptionInputBoxTask"
+        app:layout_constraintEnd_toEndOf="@id/DescriptionInputBoxTask"
+        app:layout_constraintBottom_toBottomOf="@id/DescriptionInputBoxTask"
+        android:minHeight="48dp"
         android:layout_marginBottom="100dp"
         android:fontFamily="@font/inter"
         android:hint="@string/NothingThere"
@@ -223,7 +226,9 @@
         android:layout_marginStart="10dp"
         android:background="@android:color/transparent"
         android:text=""
-        android:inputType="text|textCapSentences"
+        android:inputType="text|textCapSentences|textMultiLine"
+        android:maxLength="195"
+        android:maxLines="6"
         />
 
     <ImageButton
