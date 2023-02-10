@@ -17,12 +17,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 
-import com.example.myday.data.Task
+import com.example.myday.data.database.Task
 import com.example.myday.data.database.TaskDB
 import com.example.myday.databinding.ActivityMainBinding
 import java.text.SimpleDateFormat
 import java.util.*
-import java.util.concurrent.ExecutorService
 
 class MainActivity : AppCompatActivity(), TaskAdapter.RecyclerViewListener {
 
@@ -77,6 +76,7 @@ class MainActivity : AppCompatActivity(), TaskAdapter.RecyclerViewListener {
                 taskViewModel.editTask(result.data?.getSerializableExtra("task_description_back") as Task)
             }
         }
+
     }
 
      override fun onClickCheckBox(task: Task) {
@@ -85,7 +85,7 @@ class MainActivity : AppCompatActivity(), TaskAdapter.RecyclerViewListener {
 
      override fun onClickTaskBoxPattern(task: Task) {
          //Редактирую задачу
-         val i = Intent(this, TaskDescription::class.java)
+         val i = Intent(this, TaskEdit::class.java)
          i.putExtra("task_description", task)
          launcher2?.launch(i)
      }

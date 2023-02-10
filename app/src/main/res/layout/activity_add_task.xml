@@ -35,6 +35,7 @@
         />
 
     <ImageButton
+        android:id="@+id/goToMainActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -42,7 +43,6 @@
         android:background="@android:color/transparent"
         android:minWidth="48dp"
         android:minHeight="48dp"
-        android:onClick="closeAddTaskActivity"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/exit"
@@ -88,18 +88,20 @@
 
     <EditText
         android:id="@+id/getTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:paddingStart="10dp"
         android:background="@android:color/transparent"
-        android:ems="13"
         android:fontFamily="@font/inter"
         android:hint="@string/Add_title"
         android:inputType="text|textCapSentences"
-        android:maxLength="24"
-        android:minHeight="48dp"
+        android:maxLength="20"
         app:layout_constraintStart_toStartOf="@id/TitleInputBox"
-        app:layout_constraintTop_toTopOf="@id/TitleInputBox" />
+        app:layout_constraintTop_toTopOf="@id/TitleInputBox"
+        app:layout_constraintEnd_toEndOf="@id/TitleInputBox"
+        app:layout_constraintBottom_toBottomOf="@id/TitleInputBox"
+        android:paddingEnd="10dp"
+        />
 
     <TextView
         android:id="@+id/Category"
@@ -130,7 +132,6 @@
         android:background="@android:color/transparent"
         app:srcCompat="@drawable/choosen_default_category"
         tools:ignore="SpeakableTextPresentCheck"
-        android:onClick="setCategoryDefault"
         app:layout_constraintEnd_toStartOf="@id/calendar_category"
         app:layout_constraintTop_toTopOf="@id/calendar_category"
         app:layout_constraintBottom_toBottomOf="@id/calendar_category"
@@ -145,7 +146,6 @@
         app:layout_constraintTop_toTopOf="@id/default_category"
         app:srcCompat="@drawable/calendar_category"
         tools:ignore="SpeakableTextPresentCheck"
-        android:onClick="setCategoryCalendar"
         app:layout_constraintEnd_toStartOf="@id/chill_category"
         app:layout_constraintBottom_toBottomOf="@id/default_category"
         />
@@ -161,8 +161,6 @@
         app:layout_constraintBottom_toBottomOf="@id/calendar_category"
         app:srcCompat="@drawable/chill_category"
         tools:ignore="SpeakableTextPresentCheck"
-        android:onClick="setCategoryChill"
-
         />
 
     <TextView
@@ -186,76 +184,36 @@
         android:layout_marginTop="10dp"
         />
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="105dp"
-        android:background="@android:color/transparent"
-        android:minWidth="48dp"
-        android:minHeight="48dp"
-        app:layout_constraintStart_toStartOf="@id/TimeInputBox"
-        app:layout_constraintTop_toTopOf="@id/TimeInputBox"
-        app:layout_constraintBottom_toBottomOf="@id/TimeInputBox"
-        app:srcCompat="@drawable/clock_icon"
-        tools:ignore="SpeakableTextPresentCheck"
-        />
-
     <EditText
         android:id="@+id/getTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@android:color/transparent"
-        android:ems="7"
+        android:ems="5"
         android:hint="@string/Time"
         android:inputType="time"
-        android:minHeight="48dp"
+        android:paddingStart="10dp"
         app:layout_constraintBottom_toBottomOf="@id/TimeInputBox"
-        app:layout_constraintEnd_toEndOf="@id/TimeInputBox"
+        app:layout_constraintEnd_toStartOf="@id/clockBtn"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@id/TimeInputBox"
         app:layout_constraintTop_toTopOf="@id/TimeInputBox"
-        />
-
-    <ImageView
-        android:id="@+id/CalendarInputBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        app:layout_constraintBottom_toBottomOf="@id/TimeInputBox"
-        app:layout_constraintEnd_toStartOf="@+id/margin_secondActivity2"
-        app:layout_constraintStart_toEndOf="@id/TimeInputBox"
-        app:layout_constraintTop_toTopOf="@id/TimeInputBox"
-        app:srcCompat="@drawable/calendar_time_input_box"
-        />
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
+        android:id="@+id/clockBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="105dp"
-        android:layout_marginTop="2dp"
         android:background="@android:color/transparent"
+        app:layout_constraintStart_toStartOf="@id/TimeInputBox"
+        app:layout_constraintTop_toTopOf="@id/TimeInputBox"
+        app:layout_constraintBottom_toBottomOf="@id/TimeInputBox"
+        app:layout_constraintEnd_toEndOf="@id/TimeInputBox"
+        android:minHeight="48dp"
         android:minWidth="48dp"
-        android:minHeight="48dp"
-        app:layout_constraintStart_toStartOf="@id/CalendarInputBox"
-        app:layout_constraintTop_toTopOf="@id/CalendarInputBox"
-        app:srcCompat="@drawable/calendar_icon"
+        app:srcCompat="@drawable/clock_icon"
         tools:ignore="SpeakableTextPresentCheck"
-        />
-
-    <EditText
-        android:id="@+id/getDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:background="@android:color/transparent"
-        android:ems="7"
-        android:hint="@string/Date"
-        android:inputType="date"
-        android:minHeight="48dp"
-        app:layout_constraintBottom_toBottomOf="@id/CalendarInputBox"
-        app:layout_constraintEnd_toEndOf="@id/CalendarInputBox"
-        app:layout_constraintStart_toStartOf="@id/CalendarInputBox"
-        app:layout_constraintTop_toTopOf="@id/CalendarInputBox"
+        app:layout_constraintHorizontal_bias="1"
         />
 
     <TextView
@@ -284,22 +242,20 @@
     <EditText
         android:id="@+id/getDescription"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:background="@android:color/transparent"
         android:ems="14"
         android:hint="@string/Add_description"
         android:inputType="text|textCapSentences|textMultiLine"
         android:maxLength="195"
         android:maxLines="6"
-        android:minHeight="48dp"
         app:layout_constraintBottom_toBottomOf="@+id/DescriptionInputBox"
         app:layout_constraintEnd_toEndOf="@+id/DescriptionInputBox"
         app:layout_constraintStart_toStartOf="@id/DescriptionInputBox"
         app:layout_constraintTop_toTopOf="@id/DescriptionInputBox"
-        android:layout_marginBottom="100dp"
-        android:paddingBottom="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="10dp"
+        android:paddingBottom="125dp"
+        android:paddingStart="10dp"
+        android:paddingTop="10dp"
         />
 
     <ImageButton
@@ -308,7 +264,6 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:background="@android:color/transparent"
-        android:onClick="goToMainActivity"
         android:textColor="@color/textColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
