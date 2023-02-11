@@ -3,7 +3,7 @@ package com.example.myday
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import com.example.myday.data.Task
+import com.example.myday.data.database.Task
 import com.example.myday.data.database.Dao
 import com.example.myday.data.database.TaskDB
 import java.util.concurrent.ExecutorService
@@ -20,7 +20,7 @@ class TaskViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun addTask(task : Task) {
-        executorService.execute {taskDao.insertTask(task)}
+        executorService.execute { taskDao.insertTask(task) }
     }
 
     fun deleteTask(task : Task) {

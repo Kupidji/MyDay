@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myday.data.Task
+import com.example.myday.data.database.Task
 import com.example.myday.databinding.TaskBoxPatternBinding
 
 class TaskAdapter(val listener : RecyclerViewListener) : RecyclerView.Adapter<TaskAdapter.TaskHolder>() {

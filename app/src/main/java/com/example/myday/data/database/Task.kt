@@ -1,4 +1,4 @@
-package com.example.myday.data
+package com.example.myday.data.database
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
@@ -15,8 +15,6 @@ data class Task(
     val category : Int,
     @ColumnInfo(name = "time")
     var time : String,
-    @ColumnInfo(name = "date")
-    val date : String,
     @ColumnInfo(name = "description")
     val description : String
     )

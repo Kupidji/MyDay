@@ -20,4 +20,5 @@
     <string name="SaveEdit">Сохранить редактирование</string>
     <string name="Title_task">Заголовок:</string>
     <string name="ErrorTitle">Обязательное поле</string>
+    <string name="NOtification">Уведомление</string>
 </resources>

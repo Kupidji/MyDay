@@ -10,6 +10,7 @@
 
     <color name="background">#F1F5F9</color>
     <color name="colorPrimaryDark">#4A3780</color>
+
     <color name="mainTextColor">#FFFFFFFF</color>
     <color name="descriptionTextColor">#606061</color>
     <color name="textColor">#1B1B1D</color>
@@ -18,5 +19,6 @@
     <color name="mainTextColor_dark">#FFFFFFFF</color>
     <color name="textColor_dark">#FFFFFFFF</color>
     <color name="descriptionTextColor_dark">#D3CFDD</color>
+    <color name="timePickerColor_dark">#6C608D</color>
 
 </resources>
