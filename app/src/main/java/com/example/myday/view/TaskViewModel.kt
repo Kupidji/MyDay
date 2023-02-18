@@ -1,4 +1,4 @@
-package com.example.myday
+package com.example.myday.view
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

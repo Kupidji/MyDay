@@ -1,4 +1,4 @@
-package com.example.myday
+package com.example.myday.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

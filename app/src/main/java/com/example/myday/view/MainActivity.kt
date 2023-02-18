@@ -6,8 +6,10 @@
 //██║░╚═╝░██║░░░██║░░░██████╔╝██║░░██║░░░██║░░░
 //╚═╝░░░░░╚═╝░░░╚═╝░░░╚═════╝░╚═╝░░╚═╝░░░╚═╝░░░
 
-package com.example.myday
+package com.example.myday.view
 
+import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.result.ActivityResult
@@ -20,6 +22,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myday.data.database.Task
 import com.example.myday.data.database.TaskDB
 import com.example.myday.databinding.ActivityMainBinding
+import com.example.myday.service.AlarmService
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -31,11 +34,14 @@ class MainActivity : AppCompatActivity(), TaskAdapter.RecyclerViewListener {
     private var adapter = TaskAdapter(this)
     private lateinit var DB : TaskDB
     lateinit var taskViewModel: TaskViewModel
+    lateinit var alarmService: AlarmService
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        alarmService = AlarmService(this)
 
         taskViewModel = ViewModelProviders.of(this).get(TaskViewModel::class.java)
 

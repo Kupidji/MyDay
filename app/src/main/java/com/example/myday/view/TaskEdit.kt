@@ -1,4 +1,4 @@
-package com.example.myday
+package com.example.myday.view
 
 import android.app.TimePickerDialog
 import android.content.Context
@@ -32,7 +32,7 @@ class TaskEdit : AppCompatActivity() {
             title = binding.TitleTask.text.toString(),
             category = task.category,
             time = binding.TimeTask.text.toString(),
-            description = binding.DescriptionText.text.toString()
+            description = binding.DescriptionText.text.toString(),
             )
             val i = Intent()
             i.putExtra("task_description_back", myTask)

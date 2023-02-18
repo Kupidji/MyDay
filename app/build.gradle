@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace 'com.example.myday'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.example.myday"
@@ -38,16 +38,26 @@ android {
 
 dependencies {
 
-    implementation 'androidx.room:room-ktx:2.4.3'
+    implementation 'androidx.room:room-ktx:2.5.0'
     implementation'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-    kapt 'androidx.room:room-compiler:2.4.3'
+    kapt 'androidx.room:room-compiler:2.5.0'
 
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.5.1'
-    implementation 'com.google.android.material:material:1.7.0'
+    implementation 'androidx.work:work-runtime-ktx:2.8.0'
+    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.8.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.4'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    //Timber
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+
+    //Notification Library
+    implementation "io.karn:notify:1.3.0"
+
+    // Material Design
+    implementation 'com.google.android.material:material:1.9.0-alpha01'
 }

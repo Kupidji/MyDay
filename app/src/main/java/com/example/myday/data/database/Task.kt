@@ -1,21 +1,21 @@
 package com.example.myday.data.database
 
+import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.sql.Time
 
 @Entity (tableName = "tasks")
 data class Task(
     @PrimaryKey(autoGenerate = true)
-    var id : Int? = null,
+    var id: Int? = null,
     @ColumnInfo(name = "title")
-    val title : String,
+    val title: String,
     @ColumnInfo(name = "category")
-    val category : Int,
+    val category: Int,
     @ColumnInfo(name = "time")
-    var time : String,
+    var time: String,
     @ColumnInfo(name = "description")
-    val description : String
+    val description: String,
     )
     : java.io.Serializable

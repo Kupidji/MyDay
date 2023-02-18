@@ -1,4 +1,4 @@
-package com.example.myday
+package com.example.myday.view
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -52,6 +52,7 @@ class TaskAdapter(val listener : RecyclerViewListener) : RecyclerView.Adapter<Ta
         fun bind(task : Task, listener : RecyclerViewListener) {
             binding.TitlePattern.text = task.title
             if (task.time.isNotEmpty()) {
+                binding.TimePattern.visibility = View.VISIBLE
                 binding.TimePattern.text = task.time
             }
             else binding.TimePattern.visibility = View.GONE

@@ -1,32 +1,39 @@
-package com.example.myday
+package com.example.myday.view
 
+import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
-import android.view.View
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import com.example.myday.R
 import com.example.myday.data.database.Task
 import com.example.myday.databinding.ActivityAddTaskBinding
+import com.example.myday.service.AlarmService
 import java.text.SimpleDateFormat
 import java.util.*
-
 
 class AddTaskActivity : AppCompatActivity() {
 
     lateinit var binding : ActivityAddTaskBinding
     private var category: Int = R.drawable.default_category
     private var doubleBackToExitPressedOnce = false
+    private lateinit var alarmService: AlarmService
+    private var ourTime = 0L
+    private var ourMassage = ""
 
+    @RequiresApi(Build.VERSION_CODES.S)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAddTaskBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        getTime(binding.getTime, this)
+        alarmService = AlarmService(this)
 
         binding.defaultCategory.setOnClickListener {
             setCategoryDefault()
@@ -44,7 +51,16 @@ class AddTaskActivity : AppCompatActivity() {
             closeAddTaskActivity()
         }
 
+        binding.clockBtn.setOnClickListener {
+            setAlarm(binding.getTime) { ourTime = it }
+        }
+
+        binding.getTime.setOnClickListener {
+            setAlarm(binding.getTime) { ourTime = it }
+        }
+
         binding.ButtonSave.setOnClickListener {
+            if (ourTime != 0L) alarmService.setExactAlarm(ourTime, binding.getTitle.text.toString())
             goToMainActivity()
         }
 
@@ -68,7 +84,7 @@ class AddTaskActivity : AppCompatActivity() {
         }
     }
 
-    fun goToMainActivity() {
+    private fun goToMainActivity() {
         if (binding.getTitle.text.isEmpty()) {
             binding.getTitle.error = "Обязательное поле"
         }
@@ -78,8 +94,9 @@ class AddTaskActivity : AppCompatActivity() {
                 title = binding.getTitle.text.toString(),
                 category = category,
                 time = binding.getTime.text.toString(),
-                description = binding.getDescription.text.toString()
+                description = binding.getDescription.text.toString(),
             )
+            ourMassage = task.title
             val i = Intent()
             i.putExtra("task", task)
             setResult(RESULT_OK, i)
@@ -87,7 +104,7 @@ class AddTaskActivity : AppCompatActivity() {
         }
     }
 
-    fun closeAddTaskActivity() {
+    private fun closeAddTaskActivity() {
         if (binding.getTitle.text.isBlank()) {
 
         }
@@ -95,55 +112,43 @@ class AddTaskActivity : AppCompatActivity() {
         finish()
     }
 
-    fun setCategoryDefault() {
+    private fun setCategoryDefault() {
         binding.defaultCategory.setImageResource(R.drawable.choosen_default_category)
         binding.calendarCategory.setImageResource(R.drawable.calendar_category)
         binding.chillCategory.setImageResource(R.drawable.chill_category)
         category = R.drawable.default_category
     }
 
-    fun setCategoryCalendar() {
+    private fun setCategoryCalendar() {
         binding.calendarCategory.setImageResource(R.drawable.choosen_calendar_category)
         binding.defaultCategory.setImageResource(R.drawable.default_category)
         binding.chillCategory.setImageResource(R.drawable.chill_category)
         category = R.drawable.calendar_category
     }
 
-    fun setCategoryChill() {
+    private fun setCategoryChill() {
         binding.chillCategory.setImageResource(R.drawable.choosen_chill_category)
         binding.defaultCategory.setImageResource(R.drawable.default_category)
         binding.calendarCategory.setImageResource(R.drawable.calendar_category)
         category = R.drawable.chill_category
     }
 
-    fun getTime(textView: TextView, context: Context){
-
-        val cal = Calendar.getInstance()
-
-        val timeSetListener = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
-            cal.set(Calendar.HOUR_OF_DAY, hour)
-            cal.set(Calendar.MINUTE, minute)
-
-            textView.text = SimpleDateFormat("HH:mm").format(cal.time)
-        }
-
-        binding.clockBtn.setOnClickListener {
+    private fun setAlarm(textView: TextView, callback: (Long) -> Unit) {
+        Calendar.getInstance().apply {
+            this.set(Calendar.SECOND, 0)
+            this.set(Calendar.MILLISECOND, 0)
             TimePickerDialog(
-                context,
-                timeSetListener,
-                cal.get(Calendar.HOUR_OF_DAY),
-                cal.get(Calendar.MINUTE),
-                true,
-            ).show()
-        }
-
-        binding.getTime.setOnClickListener {
-            TimePickerDialog(
-                context,
-                timeSetListener,
-                cal.get(Calendar.HOUR_OF_DAY),
-                cal.get(Calendar.MINUTE),
-                true,
+                this@AddTaskActivity,
+                0,
+                { _, hour, minute ->
+                    this.set(Calendar.HOUR_OF_DAY, hour)
+                    this.set(Calendar.MINUTE, minute)
+                    callback(this.timeInMillis)
+                    textView.text = SimpleDateFormat("HH:mm").format(this.time)
+                },
+                this.get(Calendar.HOUR_OF_DAY),
+                this.get(Calendar.MINUTE),
+                true
             ).show()
         }
     }
