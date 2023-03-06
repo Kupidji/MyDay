@@ -14,17 +14,18 @@ class SettingsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySettingsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.closeActivity.setOnClickListener {
+            finish()
+        }
+
+        binding.WhiteTheme.setOnClickListener {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
+
+        binding.DarkTheme.setOnClickListener {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        }
     }
 
-    fun GoToMainActivity(view : View) {
-        finish()
-    }
-
-    fun setWhiteTheme(view: View) {
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-    }
-
-    fun setDarkTheme(view: View) {
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-    }
 }
