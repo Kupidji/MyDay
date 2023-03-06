@@ -1,5 +1,6 @@
 package com.example.myday.data.database
 
+import android.app.PendingIntent
 import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
@@ -15,7 +16,11 @@ data class Task(
     val category: Int,
     @ColumnInfo(name = "time")
     var time: String,
+    @ColumnInfo(name = "time_in_long")
+    var time_in_long : Long,
     @ColumnInfo(name = "description")
     val description: String,
+    @ColumnInfo(name = "notificationChannelID")
+    var channelID : Int,
     )
     : java.io.Serializable

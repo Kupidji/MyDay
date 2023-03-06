@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase
 @Database (entities = [Task::class], version = 1)
 abstract class TaskDB : RoomDatabase() {
 
-    abstract fun getDao() : Dao
+    abstract fun getDao() : TaskDao
 
     companion object {
         fun getDB(context : Context) : TaskDB {

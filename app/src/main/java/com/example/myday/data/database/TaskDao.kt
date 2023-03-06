@@ -8,7 +8,7 @@ import androidx.room.Query
 import androidx.room.Update
 
 @Dao
-interface Dao {
+interface TaskDao {
     @Insert
     fun insertTask(task : Task)
     @Query ("SELECT * FROM tasks")

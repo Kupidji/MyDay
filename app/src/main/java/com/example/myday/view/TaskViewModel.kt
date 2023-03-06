@@ -4,14 +4,14 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import com.example.myday.data.database.Task
-import com.example.myday.data.database.Dao
+import com.example.myday.data.database.TaskDao
 import com.example.myday.data.database.TaskDB
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
 class TaskViewModel(application: Application) : AndroidViewModel(application) {
 
-    private var taskDao : Dao
+    private var taskDao : TaskDao
     private var executorService : ExecutorService
 
     init {

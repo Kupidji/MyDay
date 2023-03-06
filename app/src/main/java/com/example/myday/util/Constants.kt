@@ -4,7 +4,10 @@ object Constants {
     const val EXTRA_EXACT_ALARM_TIME = "EXTRA_EXACT_ALARM_TIME"
 
     const val ACTION_SET_EXACT = "ACTION_SET_EXTRA"
-    const val ACTION_SET_REPETITIVE_EXACT = "ACTION_SET_REPETITIVE_EXACT"
+    const val CHANNEL_ID = "CHANNEL_ID"
+    const val MESSAGE = "MESSAGE"
 
-    const val CHANNEL_ID_TASKTIME = "CHANNEL_ID_TASKTIME"
+    const val ADD_TASK = "ADD_TASK"
+    const val EDIT_TASK_INPUT = "EDIT_TASK_INPUT"
+    const val EDIT_TASK_OUTPUT = "EDIT_TASK_OUTPUT"
 }

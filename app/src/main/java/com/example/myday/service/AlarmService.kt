@@ -13,24 +13,41 @@ class AlarmService(private val context: Context) {
     private val alarmManager: AlarmManager? =
         context.getSystemService(Context.ALARM_SERVICE) as AlarmManager?
 
-    fun setExactAlarm(timeInMillis: Long, message : String) {
+    fun setExactAlarm(timeInMillis: Long, message : String, channelID : Int) {
         setAlarm(
             timeInMillis,
             getPendingIntent(
+                channelID,
                 getIntent().apply {
                     action = Constants.ACTION_SET_EXACT
-                    type = message
+                    putExtra(Constants.MESSAGE, message)
+                    putExtra(Constants.CHANNEL_ID, channelID)
                     putExtra(Constants.EXTRA_EXACT_ALARM_TIME, timeInMillis)
                 }
             )
         )
     }
 
-    //@SuppressLint("UnspecifiedImmutableFlag")
-    private fun getPendingIntent(intent: Intent) =
+    fun cancelNotification(timeInMillis: Long, message : String, channelID : Int) {
+        if (timeInMillis != 0L) {
+            cancelExactAlarm(
+                getPendingIntent(
+                    channelID,
+                    getIntent().apply {
+                        action = Constants.ACTION_SET_EXACT
+                        putExtra(Constants.MESSAGE, message)
+                        putExtra(Constants.CHANNEL_ID, channelID)
+                        putExtra(Constants.EXTRA_EXACT_ALARM_TIME, timeInMillis)
+                    }
+                )
+            )
+        }
+    }
+
+    private fun getPendingIntent(channelID: Int, intent: Intent) =
         PendingIntent.getBroadcast(
             context,
-            getRandomRequestCode(),
+            channelID,
             intent,
             PendingIntent.FLAG_IMMUTABLE
         )
@@ -54,8 +71,10 @@ class AlarmService(private val context: Context) {
         }
     }
 
-    private fun getIntent() = Intent(context, AlarmReceiver::class.java)
+    private fun cancelExactAlarm(pendingIntent: PendingIntent) {
+        alarmManager?.cancel(pendingIntent)
+    }
 
-    private fun getRandomRequestCode() = RandomUtil.getRandomInt()
+    private fun getIntent() = Intent(context, AlarmReceiver::class.java)
 
 }

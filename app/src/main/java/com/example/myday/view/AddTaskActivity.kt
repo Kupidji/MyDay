@@ -15,17 +15,20 @@ import com.example.myday.R
 import com.example.myday.data.database.Task
 import com.example.myday.databinding.ActivityAddTaskBinding
 import com.example.myday.service.AlarmService
+import com.example.myday.util.Constants
+import com.example.myday.util.RandomUtil
 import java.text.SimpleDateFormat
 import java.util.*
 
 class AddTaskActivity : AppCompatActivity() {
 
-    lateinit var binding : ActivityAddTaskBinding
+    private lateinit var binding : ActivityAddTaskBinding
     private var category: Int = R.drawable.default_category
     private var doubleBackToExitPressedOnce = false
     private lateinit var alarmService: AlarmService
     private var ourTime = 0L
     private var ourMassage = ""
+    private var channelID = 0
 
     @RequiresApi(Build.VERSION_CODES.S)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,8 +63,8 @@ class AddTaskActivity : AppCompatActivity() {
         }
 
         binding.ButtonSave.setOnClickListener {
-            if (ourTime != 0L) alarmService.setExactAlarm(ourTime, binding.getTitle.text.toString())
             goToMainActivity()
+            if (ourTime != 0L) alarmService.setExactAlarm(ourTime, binding.getTitle.text.toString(), channelID)
         }
 
 
@@ -94,11 +97,17 @@ class AddTaskActivity : AppCompatActivity() {
                 title = binding.getTitle.text.toString(),
                 category = category,
                 time = binding.getTime.text.toString(),
+                time_in_long = ourTime,
                 description = binding.getDescription.text.toString(),
+                channelID = 0
             )
+            if (task.time.isNotBlank()) {
+                task.channelID = RandomUtil.getRandomInt()
+                channelID = task.channelID
+            }
             ourMassage = task.title
             val i = Intent()
-            i.putExtra("task", task)
+            i.putExtra(Constants.ADD_TASK, task)
             setResult(RESULT_OK, i)
             finish()
         }
