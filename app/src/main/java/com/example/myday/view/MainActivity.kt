@@ -8,13 +8,16 @@
 
 package com.example.myday.view
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myday.data.database.Task
@@ -30,16 +33,23 @@ class MainActivity : AppCompatActivity(), TaskAdapter.RecyclerViewListener {
 
     private var launcher : ActivityResultLauncher<Intent>? = null
     private var launcher2 : ActivityResultLauncher<Intent>? = null
-    lateinit var binding : ActivityMainBinding
+    private lateinit var binding : ActivityMainBinding
     private var adapter = TaskAdapter(this)
     private lateinit var DB : TaskDB
-    lateinit var taskViewModel: TaskViewModel
-    lateinit var alarmService: AlarmService
+    private lateinit var taskViewModel: TaskViewModel
+    private lateinit var alarmService: AlarmService
+    private lateinit var settings: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // последняя выбранная тема
+        settings = getSharedPreferences(Constants.SETTINGS, Context.MODE_PRIVATE)
+        if (settings.contains(Constants.CURRENT_THEME)) {
+            AppCompatDelegate.setDefaultNightMode(settings.getInt(Constants.CURRENT_THEME, AppCompatDelegate.MODE_NIGHT_YES))
+        }
 
         alarmService = AlarmService(this)
 
@@ -84,6 +94,12 @@ class MainActivity : AppCompatActivity(), TaskAdapter.RecyclerViewListener {
             }
         }
 
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        val editor = settings.edit()
+        editor.putInt(Constants.CURRENT_THEME, AppCompatDelegate.getDefaultNightMode()).apply()
     }
 
      override fun onClickCheckBox(task: Task) {

@@ -10,4 +10,7 @@ object Constants {
     const val ADD_TASK = "ADD_TASK"
     const val EDIT_TASK_INPUT = "EDIT_TASK_INPUT"
     const val EDIT_TASK_OUTPUT = "EDIT_TASK_OUTPUT"
+
+    const val SETTINGS = "SETTINGS"
+    const val CURRENT_THEME = "CURRENT_THEME"
 }
