@@ -1,8 +1,6 @@
 package com.example.myday.view
 
-import android.app.DatePickerDialog
 import android.app.TimePickerDialog
-import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -77,7 +75,7 @@ class AddTaskActivity : AppCompatActivity() {
                 return
             }
             this.doubleBackToExitPressedOnce = true
-            Toast.makeText(this, "Нажмите кнопку назад для выхода", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.Go_back, Toast.LENGTH_SHORT).show()
             Handler().postDelayed(Runnable { doubleBackToExitPressedOnce = false }, 2000)
         }
         else {
@@ -114,9 +112,6 @@ class AddTaskActivity : AppCompatActivity() {
     }
 
     private fun closeAddTaskActivity() {
-        if (binding.getTitle.text.isBlank()) {
-
-        }
         setResult(RESULT_CANCELED)
         finish()
     }

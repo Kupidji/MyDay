@@ -28,12 +28,6 @@ class TaskAdapter(val listener : RecyclerViewListener) : RecyclerView.Adapter<Ta
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun addTask(task : Task) {
-        taskList.add(task)
-        notifyDataSetChanged()
-    }
-
-    @SuppressLint("NotifyDataSetChanged")
     fun setData(listOfTask : MutableList<Task>) {
         if (taskList.isEmpty()) {
             taskList.clear()

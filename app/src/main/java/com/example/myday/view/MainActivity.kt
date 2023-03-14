@@ -8,19 +8,13 @@
 
 package com.example.myday.view
 
-import android.R
-import android.app.*
-import android.content.Context
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import android.view.View
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myday.data.database.Task
@@ -28,7 +22,6 @@ import com.example.myday.data.database.TaskDB
 import com.example.myday.databinding.ActivityMainBinding
 import com.example.myday.service.AlarmService
 import com.example.myday.util.Constants
-import io.karn.notify.Notify.Companion.cancelNotification
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -56,6 +49,8 @@ class MainActivity : AppCompatActivity(), TaskAdapter.RecyclerViewListener {
 
         binding.CurrentDate.text = SimpleDateFormat("dd MMMM, yyyy", Locale.getDefault()).format(Date())
 
+        checkCountOfTasks()
+
         // отрисовываю RecyclerView
         binding.RecyclerView.layoutManager = LinearLayoutManager(this)
         binding.RecyclerView.adapter = adapter
@@ -78,6 +73,7 @@ class MainActivity : AppCompatActivity(), TaskAdapter.RecyclerViewListener {
             if (result.resultCode == RESULT_OK) {
                 taskViewModel.addTask(result.data?.getSerializableExtra(Constants.ADD_TASK) as Task)
             }
+            checkCountOfTasks()
         }
 
         // Редактирую задачу
@@ -93,6 +89,7 @@ class MainActivity : AppCompatActivity(), TaskAdapter.RecyclerViewListener {
      override fun onClickCheckBox(task: Task) {
          alarmService.cancelNotification(task.time_in_long, task.title, task.channelID)
          taskViewModel.deleteTask(task)
+         checkCountOfTasks()
      }
 
      override fun onClickTaskBoxPattern(task: Task) {
@@ -100,5 +97,12 @@ class MainActivity : AppCompatActivity(), TaskAdapter.RecyclerViewListener {
          i.putExtra(Constants.EDIT_TASK_INPUT, task)
          launcher2?.launch(i)
      }
+
+    fun checkCountOfTasks() {
+        taskViewModel.getAllTasks().observe(this) { taskList ->
+            if (taskList.isEmpty()) binding.NothingThere.visibility = View.VISIBLE
+            else binding.NothingThere.visibility = View.GONE
+        }
+    }
 
  }

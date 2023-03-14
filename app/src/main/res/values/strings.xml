@@ -21,4 +21,6 @@
     <string name="Title_task">Заголовок:</string>
     <string name="ErrorTitle">Обязательное поле</string>
     <string name="NOtification">Уведомление</string>
+    <string name="Go_back">Нажмите кнопку назад для выхода</string>
+    <string name="Required_field">"Обязательное поле"</string>
 </resources>
