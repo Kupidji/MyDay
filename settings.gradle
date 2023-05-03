@@ -10,8 +10,6 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        //For Notify library
-        maven { url 'https://jitpack.io' }
     }
 }
 rootProject.name = "MyDay"

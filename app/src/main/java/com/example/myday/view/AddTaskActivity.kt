@@ -15,6 +15,7 @@ import com.example.myday.databinding.ActivityAddTaskBinding
 import com.example.myday.service.AlarmService
 import com.example.myday.util.Constants
 import com.example.myday.util.RandomUtil
+import java.lang.Math.abs
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -100,7 +101,7 @@ class AddTaskActivity : AppCompatActivity() {
                 channelID = 0
             )
             if (task.time.isNotBlank()) {
-                task.channelID = RandomUtil.getRandomInt()
+                task.channelID = abs(RandomUtil.getRandomInt())
                 channelID = task.channelID
             }
             ourMassage = task.title

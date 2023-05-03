@@ -10,6 +10,7 @@ import com.example.myday.databinding.ActivityTaskEditBinding
 import com.example.myday.service.AlarmService
 import com.example.myday.util.Constants
 import com.example.myday.util.RandomUtil
+import java.lang.Math.abs
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -19,6 +20,7 @@ class TaskEdit : AppCompatActivity() {
     var ourTime = 0L
     private lateinit var alarmService: AlarmService
     private var channelID = 0
+    lateinit private var task : Task
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +29,7 @@ class TaskEdit : AppCompatActivity() {
 
         alarmService = AlarmService(this)
 
-        var task = intent.getSerializableExtra(Constants.EDIT_TASK_INPUT) as Task
+        task = intent.getSerializableExtra(Constants.EDIT_TASK_INPUT) as Task
         binding.TitleTask.setText(task.title)
         binding.CategoryTask.setImageResource(task.category)
         if (task.time != "") binding.TimeTask.setText(task.time)
@@ -48,7 +50,7 @@ class TaskEdit : AppCompatActivity() {
                 if (task.time != myTask.time) {
                     alarmService.cancelNotification(task.time_in_long, task.title, task.channelID)
                 }
-                myTask.channelID = RandomUtil.getRandomInt()
+                myTask.channelID = abs(RandomUtil.getRandomInt())
                 channelID = myTask.channelID
             }
 
@@ -78,8 +80,8 @@ class TaskEdit : AppCompatActivity() {
 
     private fun setAlarm(textView: TextView, callback: (Long) -> Unit) {
         Calendar.getInstance().apply {
-            this.set(Calendar.SECOND, 0)
-            this.set(Calendar.MILLISECOND, 0)
+            this.set(Calendar.HOUR_OF_DAY, task.time.substring(0..1).toInt())
+            this.set(Calendar.MINUTE, task.time.substring(3..4).toInt())
             TimePickerDialog(
                 this@TaskEdit,
                 0,

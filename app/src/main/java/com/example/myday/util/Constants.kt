@@ -5,7 +5,9 @@ object Constants {
 
     const val ACTION_SET_EXACT = "ACTION_SET_EXTRA"
     const val CHANNEL_ID = "CHANNEL_ID"
+    const val TASK_NOTIFICATION = "TASK_NOTIFICATION"
     const val MESSAGE = "MESSAGE"
+    const val TASK = "TASK"
 
     const val ADD_TASK = "ADD_TASK"
     const val EDIT_TASK_INPUT = "EDIT_TASK_INPUT"
